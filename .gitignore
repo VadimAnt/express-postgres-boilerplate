@@ -1,0 +1,15 @@
+node_modules
+.vscode
+.idea
+
+env/*
+!env/.env.test.example
+!env/env.common.js
+!env/env.example.js
+!env/env.development.example.js
+!env/env.test.example.js
+!env/env.production.example.js
+!env/env.staging.example.js
+
+!logs/.gitkeep
+logs/*
