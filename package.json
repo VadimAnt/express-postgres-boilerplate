@@ -1,0 +1,56 @@
+{
+  "name": "boilerplate-express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./boot/boot.app.js",
+  "scripts": {
+    "start": "node_modules/.bin/pm2 start ecosystem.config.js --env development",
+    "start:production": "node_modules/.bin/pm2 start ecosystem.config.js --env production",
+    "start:staging": "node_modules/.bin/pm2 start ecosystem.config.js --env staging",
+    "lint:check": "node_modules/.bin/eslint . *.js",
+    "lint:fix": "node_modules/.bin/eslint . *.js --fix",
+    "test:e2e": "node node_modules/mocha/bin/mocha ./tests/e2e --exit",
+    "test:unit": "node node_modules/jest/bin/jest ./tests/unit"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^2.0.1",
+    "body-parser": "^1.18.3",
+    "compression": "^1.7.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "helmet": "^3.13.0",
+    "http-status": "^1.2.0",
+    "joi": "^13.6.0",
+    "jsonwebtoken": "^8.2.1",
+    "nodemailer": "^4.6.8",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "pm2": "^2.10.4",
+    "sequelize": "^4.38.0",
+    "sequelize-cli": "^4.1.1",
+    "winston": "^3.0.0-rc5",
+    "winston-daily-rotate-file": "^3.3.2"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "dotenv-safe": "^6.0.0",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-mocha": "^5.2.0",
+    "husky": "^1.0.0-rc.13",
+    "jest": "^23.5.0",
+    "mocha": "^5.2.0",
+    "supertest": "^3.3.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint:check",
+      "pre-push": ""
+    }
+  }
+}
