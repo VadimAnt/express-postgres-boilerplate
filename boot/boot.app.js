@@ -7,6 +7,7 @@ const cors = require('cors');
 const config = require('./boot.config');
 const DBService = require('../app/services/DBService');
 
+console.log(config);
 DBService.connect(config.db);
 
 const {

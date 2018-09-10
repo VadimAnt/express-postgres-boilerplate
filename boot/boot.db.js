@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV) {
+  Object.assign(process.env, require(`./../env/env.${process.env.NODE_ENV}`));
+}
+
 module.exports = {
   development: {
     user: process.env.DB_USER,

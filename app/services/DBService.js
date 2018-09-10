@@ -7,7 +7,7 @@ let connection = null;
 const initModels = () => {
   const pathModels = `${__dirname}/../models`;
 
-  fs.readdirSync(pathModels).filter(file => (file.indexOf('.') !== 0) && (file.slice(-3) === '.js')).forEach((file) => {
+  fs.readdirSync(pathModels).filter(file => (file.indexOf('.') !== 0) && file !== 'index.js' && (file.slice(-3) === '.js')).forEach((file) => {
     const tempName = file.substring(0, file.length - 3);
     const model = require(path.join(pathModels, file));
     connection.models[tempName] = model.init(connection, Sequelize);
