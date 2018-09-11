@@ -3,7 +3,6 @@ const dbConfig = require('./boot.db')[env];
 
 module.exports = {
   db: dbConfig,
-
   app: {
     port: process.env.APP_PORT || 80,
     baseUrl: process.env.BASE_URL || 'http://localhost',

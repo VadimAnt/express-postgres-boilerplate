@@ -7,7 +7,6 @@ const cors = require('cors');
 const config = require('./boot.config');
 const DBService = require('../app/services/DBService');
 
-console.log(config);
 DBService.connect(config.db);
 
 const {
@@ -22,7 +21,6 @@ MailService.connect(config.smtp.default);
 const routes = require('../app/routes');
 
 const passport = AuthService.init();
-
 
 app.use(helmet());
 app.use(bodyParser.urlencoded({ extended: true }));

@@ -21,7 +21,7 @@ const initModels = () => {
 
 module.exports = {
   connect(config) {
-    connection = new Sequelize(config.name, config.user, config.pass, {
+    connection = new Sequelize(config.database, config.username, config.password, {
       host: config.host,
       dialect: config.dialect,
       operatorsAliases: false,
