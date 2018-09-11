@@ -9,10 +9,10 @@ const LOCAL_AUTHENTICATED = 'local';
 
 module.exports = {
   init() {
-    provider.serializeUser((user, done) => { done(null, user._id); });
+    provider.serializeUser((user, done) => { done(null, user.id); });
     provider.deserializeUser(async (id, done) => {
       try {
-        const user = await UserModel.findOne({ query: { _id: id } });
+        const user = await UserModel.findById(id);
         if (user) {
           return done(null, user);
         }
