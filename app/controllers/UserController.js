@@ -5,7 +5,7 @@ const { CryptoService } = require('../services');
 const UserController = {
   async getAll(req, res, next) {
     try {
-      const users = await UserModel.find();
+      const users = await UserModel.findAll();
       return Response.success(res, users);
     } catch (error) {
       return next(error);
@@ -14,14 +14,13 @@ const UserController = {
 
   async create(req, res, next) {
     try {
-      const data = {
+      const user = new UserModel({
         email: req.body.email,
-        phone: req.body.phone,
         password: await CryptoService.hash(req.body.password),
-        name: req.body.name,
-      };
+        first_name: req.body.firstName,
+        last_name: req.body.lastName,
+      });
 
-      const user = new UserModel({ ...data });
       await user.save();
       return Response.success(res, user);
     } catch (error) {
@@ -31,7 +30,7 @@ const UserController = {
 
   async getOne(req, res, next) {
     try {
-      const user = await UserModel.findOne({ _id: req.params.id });
+      const user = await UserModel.findById(req.params.id);
       return Response.success(res, user);
     } catch (error) {
       return next(error);
