@@ -29,6 +29,8 @@ const UserController = {
       const user = new UserModel({
         email: req.body.email,
         password: await CryptoService.hash(req.body.password),
+        first_name: req.body.firstName,
+        last_name: req.body.lastName,
       });
       await user.save();
 

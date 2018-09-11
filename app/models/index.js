@@ -1,1 +1,5 @@
-module.exports = {};
+const UserModel = require('./User');
+
+module.exports = {
+  UserModel,
+};

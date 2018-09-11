@@ -5,7 +5,7 @@ if (!process.env.NODE_ENV) {
 if (process.env.NODE_ENV) {
   const dbConfig = require(`./../env/env.${process.env.NODE_ENV}`);
   Object.assign(process.env, {
-    DB_USER: dbConfig.DB_HOST,
+    DB_USER: dbConfig.DB_USER,
     DB_PASS: dbConfig.DB_PASS,
     DB_NAME: dbConfig.DB_NAME,
     DB_HOST: dbConfig.DB_HOST,
