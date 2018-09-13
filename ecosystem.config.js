@@ -17,29 +17,21 @@ const APP_IGNORE_WATCH = [
   'temp',
 ];
 
-const envs = {
-  env: {},
-  env_development: {},
-  env_staging: {},
-  env_production: {},
+const setUpEnvironment = (envName) => {
+  if (fs.existsSync(`${APP_PATH_ENV}/env.${envName}.js`)) {
+    const envVariables = require(`${APP_PATH_ENV}/env.${envName}.js`);
+    return envVariables;
+  }
+
+  return {};
 };
 
-
-if (fs.existsSync(`${APP_PATH_ENV}/env.common.js`)) {
-  envs.env = require(`${APP_PATH_ENV}/env.common.js`);
-}
-
-if (fs.existsSync(`${APP_PATH_ENV}/env.development.js`)) {
-  envs.env_development = require(`${APP_PATH_ENV}/env.development.js`);
-}
-
-if (fs.existsSync(`${APP_PATH_ENV}/env.staging.js`)) {
-  envs.env_staging = require(`${APP_PATH_ENV}/env.staging`);
-}
-
-if (fs.existsSync(`${APP_PATH_ENV}/env.production.js`)) {
-  envs.env_production = require(`${APP_PATH_ENV}/env.production`);
-}
+const envs = {
+  env: setUpEnvironment('common'),
+  env_development: setUpEnvironment('development'),
+  env_staging: setUpEnvironment('staging'),
+  env_production: setUpEnvironment('production'),
+};
 
 module.exports = {
   apps: [{
